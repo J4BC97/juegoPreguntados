@@ -92,7 +92,7 @@ def mostrar_resultados():
 
 
 pregunta_text = tk.Label(root, text="", font=("Open sans", 23), wraplength=800, bg="#ffffff")
-pregunta_text.place(relx=0.5, y=375, anchor="center") 
+pregunta_text.place(relx=0.5, y=350, anchor="center") 
 
 frame_botones = tk.Frame(root, bg="#ffffff")
 frame_botones.place(relx=0.5, y=550, anchor="center")  
