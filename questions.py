@@ -26,9 +26,9 @@ preguntas = [
     {"pregunta": "¿Cuál es el deporte más popular del mundo?", "opciones": ["Baloncesto", "Fútbol", "Tenis", "Cricket"], "correcta": 1},
     {"pregunta": "¿Qué atleta ha ganado más medallas olímpicas en la historia?", "opciones": ["Usain Bolt", "Michael Phelps", "Carl Lewis", "Larisa Latynina"], "correcta": 1},
     {"pregunta": "¿En qué deporte se usa una canasta para anotar puntos?", "opciones": ["Fútbol", "Baloncesto", "Voleibol", "Rugby"], "correcta": 1},
-    {"pregunta": "¿Cuál es la liga de fútbol más competitiva en Europa?", "opciones": ["La Liga (España)", "Serie A (Italia)", "Bundesliga (Alemania)", "Premier League (Inglaterra)"], "correcta": 3},
+    {"pregunta": "¿Cuál es la liga de fútbol más competitiva en Europa?", "opciones": ["La Liga \n (España)", "Serie A \n (Italia)", "Bundesliga \n (Alemania)", "Premier League \n (Inglaterra)"], "correcta": 3},
     {"pregunta": "¿Qué deporte combina natación, ciclismo y carrera a pie?", "opciones": ["Triatlón", "Duatlón", "Acuatlón", "Pentatlón"], "correcta": 0},
-    {"pregunta": "¿En qué país se originó el béisbol?", "opciones": ["Japón", "Estados Unidos", "Cuba", "República Dominicana"], "correcta": 1},
+    {"pregunta": "¿En qué país se originó el béisbol?", "opciones": ["Japón", "Estados Unidos", "Cuba", "República \n Dominicana"], "correcta": 1},
     {"pregunta": "¿Qué deporte de combate se originó en Japón y se enfoca en el lanzamiento y control del oponente?", "opciones": ["Judo", "Karate", "Taekwondo", "Aikido"], "correcta": 0},
     {"pregunta": "¿Qué deporte se practica en un campo con banderas y hoyos?", "opciones": ["Golf", "Cricket", "Rugby", "Fútbol"], "correcta": 0},
     {"pregunta": "¿Quién es conocido como el 'Rey del Fútbol'?", "opciones": ["Diego Maradona", "Pelé", "Lionel Messi", "Cristiano Ronaldo"], "correcta": 1},
@@ -90,23 +90,60 @@ def mostrar_resultados():
     else:
         root.destroy() 
 
-pregunta_text = tk.Label(root, text="", font=("Arial", 24), wraplength=800, bg="#ffffff")
-pregunta_text.place(relx=0.5, y=380, anchor="center") 
+
+pregunta_text = tk.Label(root, text="", font=("Open sans", 23), wraplength=800, bg="#ffffff")
+pregunta_text.place(relx=0.5, y=375, anchor="center") 
 
 frame_botones = tk.Frame(root, bg="#ffffff")
 frame_botones.place(relx=0.5, y=550, anchor="center")  
 
-boton_rojo = tk.Button(frame_botones, text="", font=("Arial", 24), width=15, height=2, bg="#FF3131")  # Rojo
+# Funciones para el botón rojo
+def on_enter_rojo(event):
+    boton_rojo.config(bg="#C52828")  
+
+def on_leave_rojo(event):
+    boton_rojo.config(bg="#FF3131")  # Color original
+
+boton_rojo = tk.Button(frame_botones, text="", font=("Open sans", 22), width=15, height=2, bg="#FF3131", bd=5, relief="raised")
 boton_rojo.grid(row=0, column=0, padx=20, pady=20)
+boton_rojo.bind("<Enter>", on_enter_rojo)
+boton_rojo.bind("<Leave>", on_leave_rojo)
 
-boton_azul = tk.Button(frame_botones, text="", font=("Arial", 24), width=15, height=2, bg="#5271FF")  # Azul
+# Funciones para el botón azul
+def on_enter_azul(event):
+    boton_azul.config(bg="#4861D2") 
+
+def on_leave_azul(event):
+    boton_azul.config(bg="#5271FF")  # Color original
+
+boton_azul = tk.Button(frame_botones, text="", font=("Open sans", 22), width=15, height=2, bg="#5271FF", bd=5, relief="raised")
 boton_azul.grid(row=0, column=1, padx=20, pady=20)
+boton_azul.bind("<Enter>", on_enter_azul)
+boton_azul.bind("<Leave>", on_leave_azul)
 
-boton_amarillo = tk.Button(frame_botones, text="", font=("Arial", 24), width=15, height=2, bg="#FFDE59")  # Amarillo
+# Funciones para el botón amarillo
+def on_enter_amarillo(event):
+    boton_amarillo.config(bg="#E0C453")  # Cambia a un tono más oscuro
+
+def on_leave_amarillo(event):
+    boton_amarillo.config(bg="#FFDE59")  # Color original
+
+boton_amarillo = tk.Button(frame_botones, text="", font=("Open sans", 22), width=15, height=2, bg="#FFDE59", bd=5, relief="raised")
 boton_amarillo.grid(row=1, column=0, padx=20, pady=20)
+boton_amarillo.bind("<Enter>", on_enter_amarillo)
+boton_amarillo.bind("<Leave>", on_leave_amarillo)
 
-boton_verde = tk.Button(frame_botones, text="", font=("Arial", 24), width=15, height=2, bg="#7ED952")  # Verde
+# Funciones para el botón verde
+def on_enter_verde(event):
+    boton_verde.config(bg="#6DB94C")  
+
+def on_leave_verde(event):
+    boton_verde.config(bg="#7ED952")  # Color original
+
+boton_verde = tk.Button(frame_botones, text="", font=("Open sans", 22), width=15, height=2, bg="#7ED952", bd=5, relief="raised")
 boton_verde.grid(row=1, column=1, padx=20, pady=20)
+boton_verde.bind("<Enter>", on_enter_verde)
+boton_verde.bind("<Leave>", on_leave_verde)
 
 mostrar_pregunta()
 
