@@ -73,9 +73,22 @@ def siguiente_pregunta():
     mostrar_pregunta()
 
 def mostrar_resultados():
+    global puntuacion, indice_pregunta
+    
     porcentaje = (puntuacion / len(preguntas)) * 100
+    
     messagebox.showinfo("Resultados", f"Tu puntuación es: {puntuacion}/{len(preguntas)}\nPorcentaje de aciertos: {porcentaje:.2f}%")
-    root.quit()  
+    
+    if puntuacion <= 3:
+        retry = messagebox.askyesno("Mala Puntuación", "Sacaste 3 o menos puntos. ¿Quieres intentarlo de nuevo?")
+        if retry:
+            indice_pregunta = 0
+            puntuacion = 0
+            mostrar_pregunta()  
+        else:
+            root.destroy()  
+    else:
+        root.destroy() 
 
 pregunta_text = tk.Label(root, text="", font=("Arial", 24), wraplength=800, bg="#ffffff")
 pregunta_text.place(relx=0.5, y=380, anchor="center") 
